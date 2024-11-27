@@ -38,7 +38,18 @@ export default function Home() {
           </>
         )}
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+      <footer className="flex flex-col items-center justify-center space-y-8 ">
+        <p>
+          For a more sophisticated test check out the
+          <a
+            className="hover:underline hover:underline-offset-4 ml-1"
+            href="https://www.attachmentproject.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Attachment Project
+          </a>
+        </p>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="https://github.com/maxzirps/attachment-lyrics-matcher"
