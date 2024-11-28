@@ -22,11 +22,11 @@ export default function Home() {
     setSongs(songs.filter((song) => song.id !== songId));
   };
   return (
-    <div className="h-screen mx-4 lg:max-w-[60%] xl:max-w-[40%] lg:mx-auto font-[family-name:var(--font-geist-sans)] flex flex-col py-12">
-      <main className="flex flex-col items-center flex-grow space-y-4">
+    <div className="h-screen mx-4 lg:max-w-3xl xl:max-w-2xl lg:mx-auto font-sans flex flex-col py-4 pt-12">
+      <main className="flex flex-col flex-grow items-center space-y-6">
         <div className="text-center">
-          <h1 className="text-2xl">Attachment Lyrics Matcher</h1>
-          <p className="mt-2">
+          <h1 className="text-3xl font-bold">Attachment Lyrics Matcher</h1>
+          <p className="mt-2 text-lg text-gray-600">
             Learn your attachment style based on the songs you love
           </p>
         </div>
@@ -38,8 +38,8 @@ export default function Home() {
           </>
         )}
       </main>
-      <footer className="flex flex-col items-center justify-center space-y-8 ">
-        <p>
+      <footer className="flex items-center space-x-4 justify-center">
+        <p className="text-sm text-gray-600">
           For a more sophisticated test check out the
           <a
             className="hover:underline hover:underline-offset-4 ml-1"
@@ -51,7 +51,7 @@ export default function Home() {
           </a>
         </p>
         <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          className="flex items-center hover:underline hover:underline-offset-4 text-sm text-gray-600"
           href="https://github.com/maxzirps/attachment-lyrics-matcher"
           target="_blank"
           rel="noopener noreferrer"

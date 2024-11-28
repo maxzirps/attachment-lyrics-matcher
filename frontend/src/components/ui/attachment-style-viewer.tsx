@@ -1,25 +1,34 @@
+"use client";
+
 import { Song } from "@/app/page";
 import { Button } from "./button";
-import { calculateAttachmentStyle } from "@/lib/calculate-attachment-style";
-import { useState } from "react";
-import { Progress } from "@/components/ui/progress";
+import useAttachmentStyle from "@/hooks/useAttachmentStyle";
 
 type AttachmentStyleViewerProps = {
   songs: Song[];
 };
 
 const AttachmentStyleViewer = ({ songs }: AttachmentStyleViewerProps) => {
-  const [result, setResult] = useState<number>();
-  const handleClick = () => {
-    setResult(calculateAttachmentStyle(songs));
+  const { result, isLoading, error, classifyAttachmentStyle } =
+    useAttachmentStyle();
+
+  const handleClick = async () => {
+    await classifyAttachmentStyle(songs);
   };
 
   return (
-    <div className="py-24">
-      <Button size="lg" onClick={handleClick}>
-        Check results
+    <div className="flex flex-col">
+      <Button size="lg" onClick={handleClick} disabled={isLoading}>
+        {isLoading ? "Classifying..." : "Get attachment style"}
       </Button>
-      <Progress value={result} className="mt-12" />
+      {error && <div>Error: {error}</div>}
+      {result && (
+        <div className="mt-4">
+          <h3 className="inline-block">
+            Attachment Style: <span className="font-semibold">{result}</span>
+          </h3>
+        </div>
+      )}
     </div>
   );
 };
