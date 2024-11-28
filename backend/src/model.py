@@ -2,7 +2,7 @@ import torch
 from transformers import pipeline
 
 class TextGenerationModel:
-    def __init__(self, model_id: str = "meta-llama/Llama-3.2-3B-Instruct"):
+    def __init__(self, model_id: str):
         self.pipe = pipeline(
             "text-generation",
             model=model_id,

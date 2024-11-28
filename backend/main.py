@@ -1,8 +1,13 @@
 from typing import List, Optional
-from model import TextGenerationModel
+from src.model import TextGenerationModel
 from fastapi import FastAPI, Query
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+import os
+from dotenv import load_dotenv
+import logging
+
+logger = logging.getLogger('uvicorn.error')
 
 app = FastAPI()
 
@@ -18,7 +23,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-#model = TextGenerationModel()
+@app.on_event("startup")
+async def init_model():
+    global model
+    load_dotenv(dotenv_path=".env")
+    load_dotenv(dotenv_path=".env.local", override=True)
+    model_id = os.getenv("MODEL_ID")
+    logger.info(f"Using model {model_id}")
+    model = TextGenerationModel(model_id)
 
 class Song(BaseModel):
     id: int
