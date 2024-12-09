@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import os
 from dotenv import load_dotenv
 import logging
+import json
 
 logger = logging.getLogger('uvicorn.error')
 
@@ -36,12 +37,14 @@ class Song(BaseModel):
     id: int
     title: str
     artist: str
+    
+class LyricsRequest(BaseModel):
+    lyrics: str
 
 @app.post("/classify-attachment-style")
-async def classify_attachment_style(songs: List[Song]):
-    # attachment_style = model.classify_attachment_style(song.lyrics)
-    attachment_style = "Avoidant"
-    return {"attachment_style": attachment_style}
+async def classify_attachment_style(body: LyricsRequest):
+    output = model.classify_attachment_style(body.lyrics)
+    return output
 
 songs_db = [
     Song(id=0, title="Shape of You", artist="Ed Sheeran"),
