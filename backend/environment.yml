@@ -1,6 +1,5 @@
 name: attachment-lyrics-matcher
 channels:
-  - pytorch
   - conda-forge
 dependencies:
   - accelerate=1.2.0=pyhd8ed1ab_0
@@ -98,6 +97,7 @@ dependencies:
   - libsqlite=3.47.0=hbaaea75_1
   - libssh2=1.11.1=h9cc3647_0
   - libthrift=0.21.0=h64651cc_0
+  - libtorch=2.5.1=cpu_generic_h44abd74_6
   - libutf8proc=2.9.0=h5505292_1
   - libuv=1.49.2=h7ab814d_0
   - libxml2=2.13.5=hce475f1_1
@@ -114,6 +114,7 @@ dependencies:
   - multiprocess=0.70.17=py312h0bf5046_0
   - ncurses=6.5=h7bae524_1
   - networkx=3.4.2=pyh267e887_2
+  - nomkl=1.0=h5ca1d4c_0
   - numpy=2.2.0=py312h41c6370_0
   - openssl=3.4.0=h39f12f2_0
   - orc=2.0.3=h121fd32_0
@@ -137,7 +138,7 @@ dependencies:
   - python-tzdata=2024.2=pyhd8ed1ab_1
   - python-xxhash=3.5.0=py312h024a12e_1
   - python_abi=3.12=5_cp312
-  - pytorch=2.2.2=py3.12_0
+  - pytorch=2.5.1=cpu_generic_py312h99d64c8_6
   - pytz=2024.1=pyhd8ed1ab_0
   - pyyaml=6.0.2=py312h024a12e_1
   - re2=2024.07.02=hcd0e937_1
@@ -149,6 +150,7 @@ dependencies:
   - setuptools=75.6.0=pyhff2d567_1
   - shellingham=1.5.4=pyhd8ed1ab_1
   - six=1.17.0=pyhd8ed1ab_0
+  - sleef=3.7=h8391f65_2
   - snappy=1.2.1=h98b9ce2_1
   - sniffio=1.3.1=pyhd8ed1ab_1
   - starlette=0.41.3=pyha770c72_1
