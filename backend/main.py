@@ -1,4 +1,5 @@
 from typing import List, Optional
+from src.api import get_lyrics
 from src.model import TextGenerationModel
 from fastapi import FastAPI, Query
 from pydantic import BaseModel
@@ -6,7 +7,6 @@ from fastapi.middleware.cors import CORSMiddleware
 import os
 from dotenv import load_dotenv
 import logging
-import json
 
 logger = logging.getLogger('uvicorn.error')
 
@@ -41,10 +41,19 @@ class Song(BaseModel):
 class LyricsRequest(BaseModel):
     lyrics: str
 
-@app.post("/classify-attachment-style")
+@app.post("/classify-by-lyrics")
 async def classify_attachment_style(body: LyricsRequest):
     output = model.classify_attachment_style(body.lyrics)
     return output
+
+class SongIDsRequest(BaseModel):
+    song_ids: List[int]
+    
+@app.post("/classify-by-song-ids")
+async def classify_attachment_style(body: SongIDsRequest):
+    lyricsList = [get_lyrics(song_id) for song_id in body.song_ids]
+    outputs = [model.classify_attachment_style(lyrics) for lyrics in lyricsList]
+    return outputs
 
 songs_db = [
     Song(id=0, title="Shape of You", artist="Ed Sheeran"),
