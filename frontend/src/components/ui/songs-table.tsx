@@ -1,9 +1,8 @@
 "use client";
 
-import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import { Song } from "@/app/page";
-import { Check, Plus, Trash } from "lucide-react";
+import { Trash } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 import { SongCard } from "./song-card";

@@ -21,7 +21,7 @@ export function SongSearch({ songs, addSong }: SongSearchProps) {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [suggestions, setSuggestions] = useState<Song[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
 
   const addedSongIds = songs.map((song) => song.id);
 

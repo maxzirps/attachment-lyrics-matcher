@@ -11,7 +11,7 @@ import {
 const OnlineStatus = () => {
   const pingUrl = "http://127.0.0.1:8000/ping";
   const [status, setStatus] = useState("loading");
-  const [error, setError] = useState<string | null>(null);
+  const [, setError] = useState<string | null>(null);
 
   const checkStatus = async () => {
     try {
@@ -23,7 +23,8 @@ const OnlineStatus = () => {
         setStatus("offline");
         setError("Failed to ping the server");
       }
-    } catch (err: any) {
+    } catch (err) {
+      console.log(err);
       setStatus("offline");
       setError("Failed to reach the server");
     }

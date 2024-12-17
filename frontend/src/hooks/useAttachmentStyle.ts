@@ -29,6 +29,7 @@ const useAttachmentStyle = () => {
 
       const data = await response.json();
       setResult(data.attachment_style);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       setError(error.message || "An error occurred");
     } finally {
