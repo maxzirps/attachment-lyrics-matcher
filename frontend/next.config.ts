@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
+const isProduction = process.env.NODE_ENV === "production";
+
 const nextConfig: NextConfig = {
-  basePath: "/attachment-lyrics-matcher",
+  basePath: isProduction ? "/attachment-lyrics-matcher" : "",
   output: "export",
 };
 
