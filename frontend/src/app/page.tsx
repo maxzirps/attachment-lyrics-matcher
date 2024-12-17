@@ -5,6 +5,7 @@ import { Github } from "lucide-react";
 import { SongSearch } from "@/components/ui/song-search";
 import { SongsTable } from "@/components/ui/songs-table";
 import { AttachmentStyleViewer } from "@/components/ui/attachment-style-viewer";
+import { OnlineStatus } from "@/components/ui/online-status";
 
 export type Song = {
   id: number;
@@ -39,6 +40,9 @@ export default function Home() {
         )}
       </main>
       <footer className="flex flex-col items-center space-y-4 justify-center">
+        <p>
+          <OnlineStatus />
+        </p>
         <p className="text-sm text-gray-600">
           For a more sophisticated test check out the
           <a

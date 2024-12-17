@@ -6,13 +6,16 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export",
+    "deploy": "npm run export && git add . && git commit -m 'Deploy to GitHub Pages' && git push"
   },
   "dependencies": {
     "@radix-ui/react-popover": "^1.1.2",
     "@radix-ui/react-progress": "^1.1.0",
     "@radix-ui/react-scroll-area": "^1.2.1",
     "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tooltip": "^1.1.6",
     "@tanstack/react-table": "^8.20.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

@@ -82,3 +82,10 @@ async def search_songs(
 ) -> List[Song]:
     results = api_client.search(q)
     return results
+
+@app.get("/ping")
+async def ping():
+    return JSONResponse(
+        status_code=200, 
+        content={"message": "Online"}
+    )
