@@ -34,7 +34,7 @@ export function SongSearch({ songs, addSong }: SongSearchProps) {
     try {
       setLoading(true);
       const response = await fetch(
-        `http://localhost:8000/search?search_string=${searchQuery}`
+        `http://localhost:8000/search?q=${searchQuery}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch songs");
