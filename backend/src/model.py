@@ -1,6 +1,7 @@
 import torch
 import re
-from transformers import pipeline
+from transformers import pipeline, logging
+
 from typing import TypedDict
 
 class AttachmentStyleProbabilities(TypedDict):
@@ -11,13 +12,14 @@ class AttachmentStyleProbabilities(TypedDict):
 
 class TextGenerationModel:
     def __init__(self, model_id: str):
+        logging.set_verbosity_error()
         self.pipe = pipeline(
             "text-generation",
             model=model_id,
             torch_dtype=torch.bfloat16,
             device_map="auto",
             # TODO: make it more deterministic
-            temperature=0.01
+            # temperature=0.01
         )
         
     def classify_attachment_style(self, lyrics: str, max_new_tokens: int = 256) -> AttachmentStyleProbabilities:
@@ -36,7 +38,6 @@ class TextGenerationModel:
         
         outputs = self.pipe(messages, max_new_tokens=max_new_tokens)
         answer = outputs[0]["generated_text"][-1]["content"]
-        print(answer)
         matches = re.findall(r"(Secure|Anxious|Avoidant|Disorganized): (\d+\.\d+)", answer)
 
 

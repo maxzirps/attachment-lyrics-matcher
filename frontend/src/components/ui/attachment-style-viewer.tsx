@@ -3,6 +3,7 @@
 import { Song } from "@/app/page";
 import { Button } from "./button";
 import useAttachmentStyle from "@/hooks/useAttachmentStyle";
+import { Loader2 } from "lucide-react";
 
 type AttachmentStyleViewerProps = {
   songs: Song[];
@@ -18,9 +19,22 @@ const AttachmentStyleViewer = ({ songs }: AttachmentStyleViewerProps) => {
 
   return (
     <div className="flex flex-col">
-      <Button size="lg" onClick={handleClick} disabled={isLoading}>
-        {isLoading ? "Classifying..." : "Get attachment style"}
+      <Button
+        size="default"
+        className="w-fit mx-auto"
+        onClick={handleClick}
+        disabled={isLoading}
+      >
+        {isLoading ? (
+          <span className="flex items-center justify-center space-x-1">
+            <Loader2 className="animate-spin" />
+            <span>Classifying</span>
+          </span>
+        ) : (
+          "Get attachment style"
+        )}
       </Button>
+
       {error && <div>Error: {error}</div>}
       {result && (
         <div className="mt-4">

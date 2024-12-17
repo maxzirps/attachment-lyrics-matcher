@@ -13,13 +13,13 @@ const useAttachmentStyle = () => {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/classify-attachment-style",
+        "http://127.0.0.1:8000/classify-by-song-ids",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(songs),
+          body: JSON.stringify({ song_ids: songs.map((song) => song.id) }),
         }
       );
 

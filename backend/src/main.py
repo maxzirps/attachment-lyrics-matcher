@@ -1,3 +1,4 @@
+from collections import Counter
 from typing import List, Optional
 from urllib.request import Request
 import api
@@ -35,7 +36,7 @@ async def universal_exception_handler(request: Request, exc: Exception):
 
     return JSONResponse(
         status_code=500, 
-        content={"message": "An unexpected error occurred", "details": str(exc)}
+        content={"message": "An unexpected error occurred"}
     )
 
 @app.on_event("startup")
@@ -65,16 +66,15 @@ class SongIDsRequest(BaseModel):
 async def classify_attachment_style(body: SongIDsRequest):
     lyricsList = [api_client.get_lyrics(song_id) for song_id in body.song_ids]
     outputs = [model.classify_attachment_style(lyrics) for lyrics in lyricsList]
-    return outputs
+    highest_values = []
+    for d in outputs:
+        max_key = max(d, key=d.get)
+        highest_values.append(max_key)
 
-songs_db = [
-    Song(id=0, title="Shape of You", artist="Ed Sheeran"),
-    Song(id=1, title="Blinding Lights", artist="The Weeknd"),
-    Song(id=2, title="Someone Like You", artist="Adele"),
-    Song(id=3, title="Rolling in the Deep", artist="Adele"),
-    Song(id=4, title="Perfect", artist="Ed Sheeran"),
-    Song(id=5, title="Save Your Tears", artist="The Weeknd"),
-]
+    counts = Counter(highest_values)
+
+    attachment_style = counts.most_common(1)[0][0]
+    return {"attachment_style": attachment_style,"counts": counts, "details":zip(body.song_ids, outputs)}
 
 @app.get("/search", response_model=List[Song])
 async def search_songs(

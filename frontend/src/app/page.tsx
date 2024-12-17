@@ -38,11 +38,11 @@ export default function Home() {
           </>
         )}
       </main>
-      <footer className="flex items-center space-x-4 justify-center">
+      <footer className="flex flex-col items-center space-y-4 justify-center">
         <p className="text-sm text-gray-600">
           For a more sophisticated test check out the
           <a
-            className="hover:underline hover:underline-offset-4 ml-1"
+            className="ml-1 underline"
             href="https://www.attachmentproject.com/"
             target="_blank"
             rel="noopener noreferrer"
@@ -56,7 +56,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Github />
+          <Github size={16} />
           Source
         </a>
       </footer>
