@@ -1,4 +1,4 @@
-name: Deploy Next.js site to Pages
+name: Deploy Frontend
 
 on:
   push:
@@ -70,9 +70,6 @@ jobs:
 
       - name: Build with Next.js
         run: pnpm run build # Use pnpm to run the build
-
-      - name: Export static site
-        run: pnpm run export # Use pnpm to export the site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
