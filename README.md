@@ -1,6 +1,8 @@
-# Attachment Lyrics Matcher 🎵
+# Attachment Lyrics Matcher
 
 [![Deploy Frontend](https://github.com/maxzirps/attachment-lyrics-matcher/actions/workflows/nextjs.yaml/badge.svg?branch=main)](https://github.com/maxzirps/attachment-lyrics-matcher/actions/workflows/nextjs.yaml)
+
+[DEMO](https://maxzirps.github.io/attachment-lyrics-matcher/)
 
 Find out your attachment style based on your favorite songs
 
