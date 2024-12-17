@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import {
   Tooltip,
   TooltipContent,
@@ -8,34 +7,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-const OnlineStatus = () => {
-  const pingUrl = "http://127.0.0.1:8000/ping";
-  const [status, setStatus] = useState("loading");
-  const [, setError] = useState<string | null>(null);
-
-  const checkStatus = async () => {
-    try {
-      const response = await fetch(pingUrl);
-      if (response.ok) {
-        setStatus("online");
-        setError(null);
-      } else {
-        setStatus("offline");
-        setError("Failed to ping the server");
-      }
-    } catch (err) {
-      console.log(err);
-      setStatus("offline");
-      setError("Failed to reach the server");
-    }
-  };
-
-  useEffect(() => {
-    checkStatus();
-    const interval = setInterval(checkStatus, 5000);
-    return () => clearInterval(interval);
-  }, [pingUrl]);
-
+const OnlineStatus = ({ status }: { status: string }) => {
   return (
     <div className="flex items-center justify-center space-x-2">
       <span>Connection Status:</span>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Github } from "lucide-react";
 import { SongSearch } from "@/components/ui/song-search";
 import { SongsTable } from "@/components/ui/songs-table";
@@ -15,6 +15,32 @@ export type Song = {
 
 export default function Home() {
   const [songs, setSongs] = useState<Song[]>([]);
+  const pingUrl = "http://127.0.0.1:8000/ping";
+  const [status, setStatus] = useState("loading");
+  const [, setError] = useState<string | null>(null);
+
+  const checkStatus = async () => {
+    try {
+      const response = await fetch(pingUrl);
+      if (response.ok) {
+        setStatus("online");
+        setError(null);
+      } else {
+        setStatus("offline");
+        setError("Failed to ping the server");
+      }
+    } catch (err) {
+      console.log(err);
+      setStatus("offline");
+      setError("Failed to reach the server");
+    }
+  };
+
+  useEffect(() => {
+    checkStatus();
+    const interval = setInterval(checkStatus, 5000);
+    return () => clearInterval(interval);
+  }, [pingUrl]);
 
   const addSong = (song: Song) => {
     setSongs(songs.concat(song));
@@ -31,7 +57,11 @@ export default function Home() {
             Learn your attachment style based on the songs you love
           </p>
         </div>
-        <SongSearch addSong={addSong} songs={songs} />
+        <SongSearch
+          addSong={addSong}
+          songs={songs}
+          disabled={status === "offline"}
+        />
         {songs.length > 0 && (
           <>
             <SongsTable songs={songs} removeSong={removeSong} />
@@ -40,9 +70,7 @@ export default function Home() {
         )}
       </main>
       <footer className="flex flex-col items-center space-y-4 justify-center">
-        <p>
-          <OnlineStatus />
-        </p>
+        <OnlineStatus status={status} />
         <p className="text-sm text-gray-600">
           For a more sophisticated test check out the
           <a

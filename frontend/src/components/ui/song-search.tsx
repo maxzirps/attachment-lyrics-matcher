@@ -15,9 +15,10 @@ import { SongCard } from "./song-card";
 type SongSearchProps = {
   songs: Song[];
   addSong: (song: Song) => void;
+  disabled: boolean;
 };
 
-export function SongSearch({ songs, addSong }: SongSearchProps) {
+export function SongSearch({ songs, addSong, disabled }: SongSearchProps) {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [suggestions, setSuggestions] = useState<Song[]>([]);
@@ -73,8 +74,9 @@ export function SongSearch({ songs, addSong }: SongSearchProps) {
         open={isOpen && suggestions.length > 0}
         onOpenChange={setIsOpen}
       >
-        <PopoverTrigger asChild>
+        <PopoverTrigger asChild disabled={disabled}>
           <Input
+            disabled={disabled}
             type="text"
             placeholder="Search for songs..."
             value={query}
@@ -104,6 +106,11 @@ export function SongSearch({ songs, addSong }: SongSearchProps) {
           </ul>
         </PopoverContent>
       </Popover>
+      {disabled && (
+        <div className="text-center text-red-500 text-sm mt-4">
+          App is currently offline.
+        </div>
+      )}
     </div>
   );
 }
