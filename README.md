@@ -1,5 +1,7 @@
 # Attachment Lyrics Matcher 🎵
 
+[![Deploy Frontend](https://github.com/maxzirps/attachment-lyrics-matcher/actions/workflows/nextjs.yaml/badge.svg?branch=main)](https://github.com/maxzirps/attachment-lyrics-matcher/actions/workflows/nextjs.yaml)
+
 Find out your attachment style based on your favorite songs
 
 This tool is inspired by the research in _"Individuals' favorite songs' lyrics reflect their attachment style"_ (Alaei, Rule, & MacDonald, 2022), which demonstrates that people's attachment styles can be reflected in the lyrics of their favorite songs.
