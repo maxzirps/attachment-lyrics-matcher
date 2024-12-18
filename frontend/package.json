@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next export",
-    "deploy": "npm run export && git add . && git commit -m 'Deploy to GitHub Pages' && git push"
+    "export": "next export"
   },
   "dependencies": {
     "@radix-ui/react-popover": "^1.1.2",
