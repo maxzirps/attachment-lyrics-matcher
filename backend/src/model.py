@@ -11,7 +11,7 @@ class AttachmentStyleProbabilities(TypedDict):
     disorganized: float
 
 class TextGenerationModel:
-    def __init__(self, model_id: str):
+    def __init__(self, model_id: str = "meta-llama/Llama-3.2-1B-Instruct"):
         logging.set_verbosity_error()
         self.pipe = pipeline(
             "text-generation",

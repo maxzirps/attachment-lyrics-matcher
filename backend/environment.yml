@@ -49,6 +49,7 @@ dependencies:
   - filelock=3.16.1=pyhd8ed1ab_1
   - frozenlist=1.5.0=py312h0bf5046_0
   - fsspec=2024.3.1=pyhca7485f_0
+  - fuzzywuzzy=0.18.0=pyhd8ed1ab_1
   - gflags=2.2.2=hf9b8971_1005
   - glog=0.7.1=heb240a5_0
   - gmp=6.3.0=h7bae524_2
@@ -64,6 +65,7 @@ dependencies:
   - idna=3.10=pyhd8ed1ab_1
   - jinja2=3.1.4=pyhd8ed1ab_1
   - krb5=1.21.3=h237132a_0
+  - levenshtein=0.26.1=py312hf02c72a_0
   - libabseil=20240722.0=cxx17_hf9b8971_1
   - libarrow=18.1.0=h86d57b8_4_cpu
   - libarrow-acero=18.1.0=h1dc2043_4_cpu
@@ -135,6 +137,7 @@ dependencies:
   - python=3.12.8=hc22306f_1_cpython
   - python-dateutil=2.9.0.post0=pyhff2d567_1
   - python-dotenv=1.0.1=pyhd8ed1ab_1
+  - python-levenshtein=0.26.1=pyhff2d567_1
   - python-multipart=0.0.19=pyhff2d567_1
   - python-tzdata=2024.2=pyhd8ed1ab_1
   - python-xxhash=3.5.0=py312h024a12e_1
@@ -142,6 +145,7 @@ dependencies:
   - pytorch=2.5.1=cpu_generic_py312h99d64c8_6
   - pytz=2024.1=pyhd8ed1ab_0
   - pyyaml=6.0.2=py312h024a12e_1
+  - rapidfuzz=3.11.0=py312hd8f9ff3_0
   - re2=2024.07.02=hcd0e937_1
   - readline=8.2=h92ec313_1
   - regex=2024.11.6=py312hea69d52_0

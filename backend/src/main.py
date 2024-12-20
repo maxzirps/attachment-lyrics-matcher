@@ -2,16 +2,19 @@ from collections import Counter
 from typing import List, Optional
 from urllib.request import Request
 import api
+from src.env import load_env
 from model import TextGenerationModel
 from fastapi import FastAPI, Query, HTTPException
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import os
-from dotenv import load_dotenv
+
 import logging
 from models import Song
 import traceback
+
+load_env()
 
 logger = logging.getLogger('uvicorn.error')
 
@@ -43,8 +46,6 @@ async def universal_exception_handler(request: Request, exc: Exception):
 async def init_model():
     global model
     global api_client
-    load_dotenv(dotenv_path=".env")
-    load_dotenv(dotenv_path=".env.local", override=True)
     model_id = os.getenv("MODEL_ID")
     logger.info(f"Using model {model_id}")
     model = TextGenerationModel(model_id)

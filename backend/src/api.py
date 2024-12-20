@@ -16,7 +16,7 @@ class API_Client():
 
 
     def search(self,query: str) -> list[Song]:
-        url = f"{self.API_ENDPOINT}/search?{urllib.parse.urlencode({"q": query})}"
+        url = f"{self.API_ENDPOINT}/search?{urllib.parse.urlencode({'q': query})}"
         headers = {
         "Authorization": f"Bearer {self.TOKEN}",
         "Accept": "application/json"
