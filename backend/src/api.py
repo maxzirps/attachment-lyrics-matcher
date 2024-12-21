@@ -70,7 +70,6 @@ class API_Client():
             try:
                 data = response.json()
                 song_url = data.get("response", {}).get("song", {}).get("url", "")
-                print(song_url)
                 return self.scrape_lyrics(song_url)
             except ValueError:
                 raise ValueError("Response is not valid JSON:", response.text)
